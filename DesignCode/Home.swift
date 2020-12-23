@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View {
     
     @State var showProfile = false
+    @State var viewState = CGSize.zero
     
     var body: some View {
         ZStack {
@@ -48,7 +49,7 @@ struct Home: View {
             )
             .offset(y: showProfile ? -450 : 0)
             .rotation3DEffect(
-                Angle(degrees: showProfile ? -10.0 : 0),
+                Angle(degrees: showProfile ? Double(viewState.height / 10) - 10 : 0),
                 axis: (x: 10, y: 0, z: 0)
             )
             .shadow(
@@ -68,13 +69,30 @@ struct Home: View {
             
             
             MenuView()
-                .offset(y: showProfile ? 0 : 400)
+                .background(Color.black.opacity(0.001))
+                .offset(y: showProfile ? 0 : 1000)
+                .offset(y: viewState.height)
                 .animation(
                     .spring(
                         response: 0.5,
                         dampingFraction: 0.6,
                         blendDuration: 0
                     )
+                )
+                .onTapGesture {
+                    showProfile.toggle()
+                }
+                .gesture(
+                    DragGesture()
+                        .onChanged { values in
+                            viewState = values.translation
+                        }
+                        .onEnded { _ in
+                            if viewState.height > 50 {
+                                showProfile.toggle()
+                            }
+                            viewState = .zero
+                        }
                 )
         }
     }
