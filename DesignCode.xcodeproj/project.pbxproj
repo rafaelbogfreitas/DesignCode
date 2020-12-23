@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		521ECEF5258CCE0700459790 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521ECEF4258CCE0600459790 /* MenuView.swift */; };
+		523150C7259221AA007D355A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523150C6259221AA007D355A /* Home.swift */; };
 		5290B97925660A6400B01DF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290B97825660A6400B01DF6 /* AppDelegate.swift */; };
 		5290B97B25660A6400B01DF6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290B97A25660A6400B01DF6 /* SceneDelegate.swift */; };
 		5290B97D25660A6400B01DF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290B97C25660A6400B01DF6 /* ContentView.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		521ECEF4258CCE0600459790 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		523150C6259221AA007D355A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		5290B97525660A6400B01DF6 /* DesignCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5290B97825660A6400B01DF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5290B97A25660A6400B01DF6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				5290B97825660A6400B01DF6 /* AppDelegate.swift */,
 				5290B97A25660A6400B01DF6 /* SceneDelegate.swift */,
 				5290B97C25660A6400B01DF6 /* ContentView.swift */,
+				523150C6259221AA007D355A /* Home.swift */,
 				521ECEF4258CCE0600459790 /* MenuView.swift */,
 				5290B97E25660A6500B01DF6 /* Assets.xcassets */,
 				5290B98325660A6500B01DF6 /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 			files = (
 				5290B97925660A6400B01DF6 /* AppDelegate.swift in Sources */,
 				521ECEF5258CCE0700459790 /* MenuView.swift in Sources */,
+				523150C7259221AA007D355A /* Home.swift in Sources */,
 				5290B97B25660A6400B01DF6 /* SceneDelegate.swift in Sources */,
 				5290B97D25660A6400B01DF6 /* ContentView.swift in Sources */,
 			);
