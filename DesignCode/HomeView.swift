@@ -26,8 +26,8 @@ struct HomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false, content: {
                 HStack(spacing: 30) {
-                    ForEach(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-                        SectionView()
+                    ForEach(sectionData) { item in
+                        SectionView(section: item)
                     }
                 }
                 .padding(30)
@@ -47,32 +47,68 @@ struct HomeView_Previews: PreviewProvider {
 
 
 struct SectionView: View {
+    
+    var section: Section
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("Prototype designs in SwiftUI")
+                Text(section.title)
                     .font(.system(size: 24, weight: .bold))
                     .frame(width: 160, alignment: .leading)
                     .foregroundColor(.white)
                 Spacer()
-                Image("Logo1")
+                Image(section.logo)
             }
-            Text("18 sections".uppercased())
+            Text(section.text.uppercased())
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image("Card1")
+            section.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }
         .padding(.top, 20)
         .padding(.horizontal)
         .frame(width: 275, height: 275)
-        .background(Color("card1"))
+        .background(section.color)
         .cornerRadius(30)
         .shadow(
-            color: Color("card1").opacity(0.3),
+            color: section.color.opacity(0.3),
             radius: 20,
             x: 0,
             y: 20
         )
     }
 }
+
+struct Section: Identifiable {
+    var id = UUID()
+    var title: String
+    var text: String
+    var logo: String
+    var image: Image
+    var color: Color
+}
+
+let sectionData = [
+    Section(
+        title: "Prototype designs in SwiftUI",
+        text: "18 sections",
+        logo: "Logo1",
+        image: Image("Card1"),
+        color: Color("card1")
+    ),
+    Section(
+        title: "Build a SwiftUI app",
+        text: "20 sections",
+        logo: "Logo1",
+        image: Image("Card2"),
+        color: Color("card2")
+    ),
+    Section(
+        title: "SwiftUI advanced",
+        text: "20 sections",
+        logo: "Logo1",
+        image: Image("Card3"),
+        color: Color("card3")
+    )
+]
