@@ -8,40 +8,68 @@
 import SwiftUI
 
 struct UpdateList: View {
+    
+    @ObservedObject var updateStore = UpdateStore()
+    
+    func addUpdate() {
+        updateStore.updates.append(
+            Update(
+                image: "",
+                title: "",
+                text: "",
+                date: ""
+            )
+        )
+    }
+    
     var body: some View {
         NavigationView {
-            List(updateData) { update in
-                NavigationLink(destination: UpdateDetail(update: update)) {
-                    HStack {
-                        Image(update.image)
-                            .resizable()
-                            .aspectRatio(contentMode:.fit)
-                            .frame(width: 80, height: 80)
-                            .background(Color.black)
-                            .cornerRadius(20)
-                            .padding(.trailing, 4)
-                        VStack(alignment: .leading, spacing: 8.0) {
-                            Text(update.title)
-                                .font(
-                                    .system(
-                                        size: 20,
-                                        weight: .bold
-                                    )
-                            )
-                            Text(update.text)
-                                .lineLimit(2)
-                                .font(.subheadline)
-                                .foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
-                            Text(update.date)
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.secondary)
+            List {
+                ForEach(updateStore.updates) { update in
+                    NavigationLink(destination: UpdateDetail(update: update)) {
+                        HStack {
+                            Image(update.image)
+                                .resizable()
+                                .aspectRatio(contentMode:.fit)
+                                .frame(width: 80, height: 80)
+                                .background(Color.black)
+                                .cornerRadius(20)
+                                .padding(.trailing, 4)
+                            VStack(alignment: .leading, spacing: 8.0) {
+                                Text(update.title)
+                                    .font(
+                                        .system(
+                                            size: 20,
+                                            weight: .bold
+                                        )
+                                )
+                                Text(update.text)
+                                    .lineLimit(2)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)))
+                                Text(update.date)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.secondary)
+                            }
                         }
+                        .padding(.vertical, 10)
                     }
-                    .padding(.vertical, 10)
                 }
+                .onDelete { index in
+                    if let index = index.first {
+                        updateStore.updates.remove(at: index)
+                    }
+                }
+                .onMove(perform: { indices, newOffset in
+                    updateStore.updates.move(fromOffsets: indices, toOffset: newOffset)
+                })
             }
             .navigationBarTitle(Text("Updates"))
+                .navigationBarItems(
+                    leading:Button(action: addUpdate) { Text("Add update") },
+                    trailing: EditButton()
+                )
         }
     }
 }

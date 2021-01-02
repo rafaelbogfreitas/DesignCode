@@ -33,7 +33,7 @@ struct HomeView: View {
                 })
             }
             .sheet(isPresented: $showUpdate){
-                ContentView()
+                UpdateList()
             }
             .padding(.horizontal)
             .padding(.leading, 14)
