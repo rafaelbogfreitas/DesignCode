@@ -95,7 +95,6 @@
 		5290B96C25660A6400B01DF6 = {
 			isa = PBXGroup;
 			children = (
-				520219CA25A1219700ACF617 /* RingView.swift */,
 				5290B97725660A6400B01DF6 /* DesignCode */,
 				5290B98E25660A6600B01DF6 /* DesignCodeTests */,
 				5290B99925660A6600B01DF6 /* DesignCodeUITests */,
@@ -116,6 +115,7 @@
 		5290B97725660A6400B01DF6 /* DesignCode */ = {
 			isa = PBXGroup;
 			children = (
+				520219CA25A1219700ACF617 /* RingView.swift */,
 				520219C525A10C7900ACF617 /* TabBar.swift */,
 				520219B625A0C11C00ACF617 /* UpdateList.swift */,
 				520219C025A0F71000ACF617 /* UpdateStore.swift */,
