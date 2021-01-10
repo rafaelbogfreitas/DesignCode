@@ -47,6 +47,7 @@ struct RingView: View {
                         dashPhase: 0
                     )
                 )
+                .animation(Animation.easeInOut.delay(0.3))
                 .rotationEffect(Angle(degrees: 90))
                 .rotation3DEffect(
                     Angle(degrees: 180),
