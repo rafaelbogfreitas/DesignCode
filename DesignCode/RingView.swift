@@ -11,9 +11,10 @@ struct RingView: View {
     
     var color1 = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
     var color2 = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-    var width: CGFloat = 44
-    var height: CGFloat = 44
+    var width: CGFloat = 300
+    var height: CGFloat = 300
     var percent: CGFloat = 82
+    @Binding var show: Bool
     
     var body: some View {
         
@@ -25,7 +26,7 @@ struct RingView: View {
                 .stroke(Color.black.opacity(0.1), style: StrokeStyle(lineWidth: 5  * multiplier))
                 .frame(width: width, height: height)
             Circle()
-                .trim(from: progress, to: 1.0)
+                .trim(from: show ? progress : 1, to: 1.0)
                 .stroke(
                     LinearGradient(
                         gradient: Gradient(
@@ -57,12 +58,15 @@ struct RingView: View {
             Text("\(Int(percent))%")
                 .font(.system(size: 14 * multiplier))
                 .fontWeight(.bold)
+                .onTapGesture {
+                    show.toggle()
+                }
         }
     }
 }
 
 struct RingView_Previews: PreviewProvider {
     static var previews: some View {
-        RingView()
+        RingView(show: .constant(true))
     }
 }
